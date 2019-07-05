@@ -1,0 +1,202 @@
+/* #left {background-image:url('http://www.skotos.net/IronclawGame/images/edgeleft.jpg');}
+#right {background-image:url('http://www.skotos.net/IronclawGame/images/edgeright.jpg');} */
+
+#left {
+    background: url('http://108.62.118.199:10080/Theatre/images/edgeleft.png');
+}
+
+#right {
+    background: url('http://108.62.118.199:10080/Theatre/images/edgeright.png');
+}
+
+legend {
+    font-weight: bolder;
+    font-size: 16px;
+}
+
+#status {
+    position:relaive; 
+    padding-top: 20px;
+    padding-bottom: 20px;
+    top:40px; 
+    left:6px; 
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#elementShowHealth,
+#elementShowEnergy,
+#elementShowHunger {
+    text-decoration: none;
+}
+
+.status_bar {
+    background: white; 
+    opacity: 0.8; 
+    border-radius: 5px 5px 5px 5px; 
+    border: 1px solid black; 
+    height: 15px; width: 100%;"
+}
+
+#health {
+    background: white; 
+    border-radius: 5px 5px 5px 5px; 
+    background:#ff0000; 
+    width: 100%; 
+    max-width: 100%; 
+    height:100%; 
+    -moz-box-shadow: inset 0 0 10px #000000; 
+    -webkit-box-shadow: inset 0 0 10px #000000; 
+    box-shadow: inset 0 0 10px #000000;
+}
+
+#energy {
+    background: white; 
+    border-radius: 5px 5px 5px 5px; 
+    background:#fff99d; 
+    width: 100%; height:100%; 
+    -moz-box-shadow: inset 0 0 10px #000000; 
+    -webkit-box-shadow: inset 0 0 10px #000000; 
+    box-shadow: inset 0 0 10px #000000;
+}
+
+#hunger {
+    background: white; 
+    border-radius: 5px 5px 5px 5px; 
+    background:#7cc623; width: 100%; 
+    height:100%; 
+    -moz-box-shadow: inset 0 0 10px #000000; 
+    -webkit-box-shadow: inset 0 0 10px #000000; 
+    box-shadow: inset 0 0 10px #000000;
+}
+
+#health_text {
+    position: relative; 
+    top: -15px; 
+    left: 0px; 
+    height: 15px; 
+    width: 100%; 
+    text-align: center; 
+    font-weight: bold; 
+    font-size: 12px;
+}
+
+#energy_text {
+    position: relative; 
+    top: -15px; 
+    left: 0px; 
+    height: 15px; 
+    width: 100%; 
+    text-align: center; 
+    font-weight: bold; 
+    font-size: 12px;
+}
+
+#hunger_text {
+    position: relative; 
+    top: -15px; 
+    left: 0px; 
+    height: 15px; 
+    width: 100%; 
+    text-align: center; 
+    font-weight: bold; 
+    font-size: 12px;
+}
+
+.resource_bar {
+    background: white; 
+    opacity: 0.8; 
+    border-radius: 5px 5px 5px 5px; 
+    border: 1px solid black; 
+    height: 15px; 
+    width: 90px; 
+    left: 10px; 
+    top: 5px; 
+    position: relative; 
+    display: block; 
+    text-align: center; 
+    font-size: 12px; 
+    font-weight:bold;
+}
+
+.resource_icon {
+    position: relative; 
+    top: -20px;
+    left: -40px;
+}
+
+#elementShowFood {
+    text-decoration: none;
+}
+
+#elementShowTextile {
+    text-decoration: none;
+}
+
+#elementShowStone {
+    text-decoration: none;
+}
+
+#elementShowMetal {
+    text-decoration: none;
+}
+
+#elementShowWood {
+    text-decoration: none;
+}
+
+#left { background-color: black; /* background-image: url('http://108.62.118.199:10080/Theatre/images/edgeleft.png'); */ }
+#right { background-color: black; /* background-image: url('http://108.62.118.199:10080/Theatre/images/edgeright.png'); */ }
+
+#right_controls {
+    
+}
+
+#left_controls {
+
+}
+
+#chat_theatre {}
+#clientui {padding-right:33px; padding-top:4px;}
+	/* #skotos_logo {background-image: url('//www.skotos.net/IronclawGame/images/skotoslogo.jpg'); height: 66px;} */
+	#skotos_logo {height: 66px;}
+	#newplayers { display:inline-block; margin: auto; position: relative; top: 0px;}
+	#save_button, #settings_button {display: inline-block; opacity:0.85; margin: 4px; position: relative; top: 0px;}
+
+    #image_map {margin-bottom: 10px; border: 0px solid black;}
+	#image_map_img {border: 0px solid black; height:130px;width:130px; background-position:center center; margin: auto; background-repeat:no-repeat; background-image:url('http://www.skotos.net/IronclawGame/images/map-loading.gif');}
+	.comp_button {position:absolute; height:8px; width:8px; border: 0px solid black; opacity: 0.9; z-index:2; background-repeat: no-repeat; margin: auto;}
+
+	#comp_nw {right:126px;	bottom:135px;}
+	#comp_n  {right:64px;	bottom:136px;}
+	#comp_ne {right:1px;	bottom:135px;}
+	#comp_w  {right:128px;	bottom:74px;}
+	#comp_e  {right:3px;	bottom:74px;}
+	#comp_sw {right:126px;	bottom:10px;}
+	#comp_s  {right:64px;	bottom:12px;}
+	#comp_se {right:1px;	bottom:12px;}
+
+
+#map_area {border: 1px solid  #666666; background: rgba(0, 0, 0, 0.5); overflow:hidden; margin: auto; width: 130px; height: 130px; position:relative; left: 10px;}
+
+.map_room {
+	z-index: 2;
+	border:     1px solid #000000;
+	font-size:  1px;
+	background: transparent;
+}
+.map_link_dia_tl {
+	top:      0px;
+	left:     0px;
+}
+.map_link_dia_tr {
+	top:      0px;
+	left:     3px;
+}
+.map_link_dia_bl {
+	top:      3px;
+	left:     0px;
+}
+.map_link_dia_br {
+	top:      3px;
+	left:     3px;
+}

@@ -1,0 +1,261 @@
+#clientui {
+	position: absolute;
+	z-index: 1;
+	top: 11px;
+	left: 30px;
+	text-align:center;
+	background-image:url("clientuibg.png");
+	width: 43px;
+	height: 69px;
+}
+#skotos_logo {
+	position: absolute;
+	z-index: 1;
+	top: 11px;
+	left: 73px;
+}
+#save_button, #settings_button {opacity:0.95; padding-left:9px; vertical-align:top; z-index:2;}
+#settings_button {padding-top:3px;}
+#monsters_logo {background-image:url('http://grendelsrevenge.skotos.net/images/logobox.png'); background-position:-5px; background-repeat:no-repeat;height:224px;}
+.sidebar {background-color:black; width:145px; color: #c9c932;}
+#core {max-width:calc(100% - 290px);}
+#chat_theatre {}
+#image_map {margin-bottom: 5px;}
+
+#left_wrap {position:relative;width:100%;height:100%;}
+	#chat_theatre {top:0; left:0; width:100%; position:absolute;}
+	#stats {height:189px; width:100%; left:0; top:calc(50% - 74px); z-index:3; position:absolute;}
+	#bar_area {width:100%; height:100%;position:relative;background-image:url('http://grendelsrevenge.skotos.net/images/statbox.png'); background-repeat:no-repeat; background-position:center; }
+		.stat_bar_back {height:75px;width:14px;top:75px;position:absolute;text-align:left;z-index:3;border:1px solid #ffffd4;overflow:hidden;}
+		.stat_bar_fill {height:75px;width:22px;position:absolute;bottom:0;z-index:4;border:1px inset #c9c9c9;transition-property:height;}
+		#bar_health       {left:19px;}
+		#fill_health      {
+			background:#ff0000;
+			background: -moz-linear-gradient(left, #ffa4a4 0%, #ff1616 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(left, #ffa4a4 0%,#ff1616 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to right, #ffa4a4 0%,#ff1616 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffa4a4',endColorstr='#ff1616',GradientType=1); /* IE6-9 */
+		}
+		#fill_health.un {
+			background:#00ff00;
+			background: -moz-linear-gradient(left, #a4fda5 0%, #22b522 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(left, #a4fda5 0%,#22b522 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to right, #a4fda5 0%,#22b522 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a4fda5',endColorstr='#22b522',GradientType=1); /* IE6-9 */
+		}
+		#bar_roundtime        {left:109px;}
+		#fill_roundtime       {
+			background:#ffd056;
+			background: -moz-linear-gradient(left, #fff699 0%, #ffae13 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(left, #fff699 0%,#ffae13 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to right, #fff699 0%,#ffae13 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff699',endColorstr='#ffae13',GradientType=1); /* IE6-9 */
+		}
+		#bar_favor_points           {left:51px;height:75px;width:14px;top:75px;position:absolute;}
+		#fill_favor_points          {
+			background:#54a1e7;
+			background: -moz-linear-gradient(left, #a5d2fe 0%, #2487db 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(left, #a5d2fe 0%,#2487db 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to right, #a5d2fe 0%,#2487db 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a5d2fe',endColorstr='#2487db',GradientType=1); /* IE6-9 */
+		}
+		#bar_favors       {left:75px;top:50px;height:100px;border:none;position:absolute;z-index:3;}
+		#fill_favors      {
+			background:#00ff00;
+			background: -moz-linear-gradient(left, #a4fda5 0%, #22b522 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(left, #a4fda5 0%,#22b522 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to right, #a4fda5 0%,#22b522 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a4fda5',endColorstr='#22b522',GradientType=1); /* IE6-9 */
+		}
+		.onefavor {
+			position: absolute;
+			z-index: 4;
+			top: 2px;
+			left: 0;
+			padding: 0px;
+			margin: 0px;
+			height: 21px;
+			width: 21px;
+			background-image: url('http://grendelsrevenge.skotos.net/images/eyeball.png');
+			overflow-y: visible;
+		}
+		.hundredfavors {
+			position: absolute;
+			z-index: 3;
+			top: 2px;
+			left: -4px;
+			padding: 0px;
+			margin: 0px;
+			height: 28px;
+			width: 28px;
+			background-image: url('http://grendelsrevenge.skotos.net/images/eyeball.png');
+			background-size: cover;
+			overflow-y: visible;
+			transform: rotate(30deg);
+		}
+		.stat_bar_label {position:absolute;bottom:1px;width:30px;height:30px;z-index:5;font-weight:bold;font-size:small;line-height:1}
+		#amt_health_text       {left:11px;}
+		#amt_favor_point_text  {left:44px;}
+		#amt_favor_text        {left:72px;}
+	#resources {height:148px; width:100%; position:absolute; z-index:4; bottom:0; left:0}
+	#resource_area {width:100%; height:100%;position:relative;background-image:url('http://grendelsrevenge.skotos.net/images/resourcebox.png'); background-repeat:no-repeat; background-position:center;}
+		.resource_icon {position:absolute;width:40px;height:50px;z-index:5;vertical-align:bottom;}
+		.resource_amount {position:absolute;bottom:0;width:100%;height:auto;z-index:6;vertical-align:bottom;font-size:small;font-weight:bold;}
+		#icn_gold_resource   {top:40px;left: 9px;}
+		#icn_iron_resource   {top:40px;left:55px;}
+		#icn_shadow_resource {top:40px;left:96px;}
+		#icn_mana_resource   {top:90px;left:29px;}
+		#icn_stone_resource  {top:90px;left:78px;}
+#abilities {
+	background-image:url('http://grendelsrevenge.skotos.net/images/abilitiesbox.png');
+	background-repeat:no-repeat;
+	background-position:top;
+	height:188px;
+	width:100%;
+}
+	#ability_container {
+		position: relative;
+		top: 38px;
+		left:10px;
+		width: calc(100% - 20px);
+		height: 100%;
+		text-align:left;
+	}
+		.ability_icon {
+			cursor: pointer;
+			display: inline-block;
+			z-index: 3;
+			height: 60px;
+			width: 60px;
+			background-image: url('http://grendelsrevenge.skotos.net/images/ability_box.png');
+			background-repeat:no-repeat;
+			background-position:center;
+			position:relative;
+			margin:0 1px;
+		}
+			.ability_overlay {
+				width:100%;
+				height:0;
+				position:absolute;
+				z-index:4;
+				bottom:0;
+				left:0;
+				background-image: url('http://grendelsrevenge.skotos.net/images/ability_overlay.png');
+				transition-property: height;
+}
+#macros {background-image:url('/images/macrobox.png'); height:230px;background-repeat:no-repeat;background-position:center;}
+#macro_area {background: rgba(0, 0, 0, 0.5); overflow:hidden; margin: auto; margin:35px 13px 11px 11px;}
+.macro_button {
+	display:inline-block;
+	color: #ffff73;
+	background-color:#646f44;
+	opacity: 0.6;
+	text-align: center;
+	width: 34px;
+	height: 19px;
+	line-height:19px;
+	font-weight:bold;
+	font-size: 11px;
+	margin: 1px;
+	border: 2px outset #5B5B44;
+}
+#map {
+	background-image:url('http://grendelsrevenge.skotos.net/images/mapbox.png');
+	background-repeat:no-repeat;
+	background-position:center;
+	height:166px;
+	width:100%;
+}
+	#map_box {
+		position: relative;
+		height:   120px;
+		width:    120px;
+		top:      35px;
+		left:     12px;
+	}
+		#regular_map {z-index:3;}
+		#arial_map {z-index:3;display:none;}
+		#sky_cover {
+			position: absolute;
+			z-index:  5;
+			left:     0px;
+			top:      0px;
+			height:   120px;
+			width:    120px;
+			background-image: url('http://grendelsrevenge.skotos.net/images/terrain/air.png');
+		}
+		.map_square {position:absolute; z-index:3; background-size: cover;}
+		.msize3 > .map_square {width:41px; height:41px;}
+		.msize4 > .map_square {width:30px; height:30px;}
+		.5-wide > .map_square {width:24px; height:24px;}
+		.msize3 > #map1 {top: 0px; left: 0px;}
+		.msize3 > #map2 {top: 0px; left:40px;}
+		.msize3 > #map3 {top: 0px; left:80px;}
+		.msize3 > #map4 {top:40px; left: 0px;}
+		.msize3 > #map5 {top:40px; left:40px;}
+		.msize3 > #map6 {top:40px; left:80px;}
+		.msize3 > #map7 {top:80px; left: 0px;}
+		.msize3 > #map8 {top:80px; left:40px;}
+		.msize3 > #map9 {top:80px; left:80px;}
+		.msize3 > #map10{display:none;}
+		.msize3 > #map11{display:none;}
+		.msize3 > #map12{display:none;}
+		.msize3 > #map13{display:none;}
+		.msize3 > #map14{display:none;}
+		.msize3 > #map15{display:none;}
+		.msize3 > #map16{display:none;}
+		.msize3 > #sky_cover{display:none;}
+		.msize4 > #map1 {top: 0px; left: 0px;}
+		.msize4 > #map2 {top: 0px; left:30px;}
+		.msize4 > #map3 {top: 0px; left:60px;}
+		.msize4 > #map4 {top: 0px; left:90px;}
+		.msize4 > #map5 {top:30px; left: 0px;}
+		.msize4 > #map6 {top:30px; left:30px;}
+		.msize4 > #map7 {top:30px; left:60px;}
+		.msize4 > #map8 {top:30px; left:90px;}
+		.msize4 > #map9 {top:60px; left: 0px;}
+		.msize4 > #map10{top:60px; left:30px;}
+		.msize4 > #map11{top:60px; left:60px;}
+		.msize4 > #map12{top:60px; left:90px;}
+		.msize4 > #map13{top:90px; left: 0px;}
+		.msize4 > #map14{top:90px; left:30px;}
+		.msize4 > #map15{top:90px; left:60px;}
+		.msize4 > #map16{top:90px; left:90px;}
+		.comp_button {position:absolute; z-index:6;}
+		#comp_nw {left:  0px;top:  0px;height:15px;width:15px;}
+		#comp_n  {left: 50px;top:  0px;height:15px;width:21px;}
+		#comp_ne {left:106px;top:  0px;height:15px;width:15px;}
+		#comp_w  {left:  0px;top: 50px;height:21px;width:15px;}
+		#comp_e  {left:106px;top: 50px;height:21px;width:15px;}
+		#comp_sw {left:  0px;top:106px;height:15px;width:15px;}
+		#comp_s  {left: 50px;top:106px;height:15px;width:21px;}
+		#comp_se {left:106px;top:106px;height:15px;width:15px;}
+
+		.mapexits {position:absolute; z-index:4;}
+		#exit1  {left: 15px; top: -8px; height:16px; width:10px;}
+		#exit2  {left: 55px; top: -8px; height:16px; width:10px;}
+		#exit3  {left: 95px; top: -8px; height:16px; width:10px;}
+		#exit4  {left: -8px; top: 15px; height:10px; width:16px;}
+		#exit5  {left: 32px; top: 15px; height:10px; width:16px;}
+		#exit6  {left: 72px; top: 15px; height:10px; width:16px;}
+		#exit7  {left:112px; top: 15px; height:10px; width:16px;}
+		#exit8  {left: 15px; top: 32px; height:16px; width:10px;}
+		#exit9  {left: 55px; top: 32px; height:16px; width:10px;}
+		#exit10 {left: 95px; top: 32px; height:16px; width:10px;}
+		#exit11 {left: -8px; top: 55px; height:10px; width:16px;}
+		#exit12 {left: 32px; top: 55px; height:10px; width:16px;}
+		#exit13 {left: 72px; top: 55px; height:10px; width:16px;}
+		#exit14 {left:112px; top: 55px; height:10px; width:16px;}
+		#exit15 {left: 15px; top: 72px; height:16px; width:10px;}
+		#exit16 {left: 55px; top: 72px; height:16px; width:10px;}
+		#exit17 {left: 95px; top: 72px; height:16px; width:10px;}
+		#exit18 {left: -8px; top: 95px; height:10px; width:16px;}
+		#exit19 {left: 32px; top: 95px; height:10px; width:16px;}
+		#exit20 {left: 72px; top: 95px; height:10px; width:16px;}
+		#exit21 {left:112px; top: 95px; height:10px; width:16px;}
+		#exit22 {left: 15px; top:112px; height:16px; width:10px;}
+		#exit23 {left: 55px; top:112px; height:16px; width:10px;}
+		#exit24 {left: 95px; top:112px; height:16px; width:10px;}
+
+#map_area {border: 1px solid  #666666; background: rgba(0, 0, 0, 0.5); overflow:hidden; margin:7px auto; width: 120px; height: 120px; position:relative;}
+#map_area * {position:absolute;}

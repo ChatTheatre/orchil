@@ -1,0 +1,100 @@
+#left {background-image:url(http://www.skotos.net/TECGame/images/edgeleft.jpg);}
+#right {background-image:url(http://www.skotos.net/TECGame/images/edgeright.jpg);}
+#chat_theatre {}
+#clientui {text-align:right;padding-right:8px;padding-top:2px; vertical-align:top;}
+#skotos_logo {display:inline-block;}
+#save_button, #settings_button {display:inline-block; opacity:0.85; padding-left:4px; padding-top:6px; vertical-align:top;}
+#image_map {margin-bottom: 5px;}
+#macro_area {border: 1px solid  #666666; background: rgba(0, 0, 0, 0.5); overflow:hidden; margin: auto; width: 88%; padding:0 2px 5px 0;}
+.macro_button {
+	display:inline-block;
+	background-color:white;
+	opacity: 0.85;
+	text-align: center;
+	width: 22px;
+	height: 17px;
+	line-height:17px;
+	font-weight:bold;
+	font-size: 12px;
+	margin: -1px 0px -1px 1px;
+}
+#status_area {border: 1px solid  #666666; background: rgba(0, 0, 0, 0.5); overflow:hidden; margin:7px auto 0 auto; width: 88%;}
+	#combo_compass {width:68px; height:86px;position:relative;display:inline-block;}
+		#light_indicator {width:68px; height:86px;background-image:url(sunburst4.gif);position:relative;display:inline-block;}
+		.comp_button {position:absolute; height:24px; width:19px; background:#aaaaaa; border: 1px solid black; opacity: 0.5;}
+		#comp_nw {left:3px; top:3px;}
+		#comp_n  {left:24px;top:3px;}
+		#comp_ne {left:45px;top:3px;}
+		#comp_w  {left:3px; top:29px;}
+		#comp_e  {left:45px;top:29px;}
+		#comp_sw {left:3px; top:55px;}
+		#comp_s  {left:24px;top:55px;}
+		#comp_se {left:45px;top:55px;}
+		#comp_u  {left:24px;top:29px;height:11px; border-top-left-radius:   10px 4px; border-top-right-radius:   10px 4px;}
+		#comp_d  {left:24px;top:42px;height:11px; border-bottom-left-radius:10px 4px; border-bottom-right-radius:10px 4px;}
+	#bar_area {width:48px; height:86px;position:relative;display:inline-block;}
+		.stat_bar_back {height:75px;width:10px;display:inline-block;position:absolute;text-align:left;}
+		.stat_bar_fill {height:75px;width:10px;position:absolute;bottom:0;}
+		.stat_bar_label {position:absolute;bottom:0;left:1px;font-size:12px;}
+		#bar_health       {background-color:#770000;left:0px;top:4px;}
+		#fill_health      {background-color:#ff0000;}
+		#bar_fatigue      {background-color:#777700;left:12px;top:4px;}
+		#fill_fatigue     {background-color:#ffff00;}
+		#bar_encumbrance  {background-color:#007777;left:24px;top:4px;}
+		#fill_encumbrance {background-color:#00ffff;}
+		#bar_satiation    {background-color:#007700;left:36px;top:4px;}
+		#fill_satiation   {background-color:#00ff00;}
+#map_area {border: 1px solid  #666666; background: rgba(0, 0, 0, 0.5); overflow:hidden; margin:7px auto; width: 120px; height: 120px; position:relative;}
+#map_area * {position:absolute;}
+
+#map_area > .map_link_hor {
+	z-index: 3;
+	width:      8px;
+	height:     2px;
+	top:      -30px;
+	left:     -30px;
+	border-top:    1px solid #000000;
+	border-bottom: 1px solid #000000;
+	background:    #ffffff;
+	font-size:     1px;
+}
+#map_area > .map_link_ver {
+	z-index: 3;
+	width:      2px;
+	height:     8px;
+	top:      -30px;
+	left:     -30px;
+	border-left:  1px solid #000000;
+	border-right: 1px solid #000000;
+	background:   #ffffff;
+	font-size:    1px;
+}
+#map_area > .map_link_dia {
+	z-index: 4;
+	width:     10px;
+	height:    10px;
+	top:      -30px;
+	left:     -30px;
+}
+.map_room {
+	z-index: 2;
+	border:     1px solid #000000;
+	font-size:  1px;
+	background: transparent;
+}
+.map_link_dia_tl {
+	top:      0px;
+	left:     0px;
+}
+.map_link_dia_tr {
+	top:      0px;
+	left:     3px;
+}
+.map_link_dia_bl {
+	top:      3px;
+	left:     0px;
+}
+.map_link_dia_br {
+	top:      3px;
+	left:     3px;
+}

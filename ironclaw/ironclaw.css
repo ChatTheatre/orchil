@@ -1,0 +1,57 @@
+#left {background-image:url('http://www.skotos.net/IronclawGame/images/edgeleft.jpg');}
+#right {background-image:url('http://www.skotos.net/IronclawGame/images/edgeright.jpg'); background-position: center 30px;}
+#chat_theatre {}
+#clientui {padding-top: 10px; padding-left: 0px; float: left;}
+	#skotos_logo {background-image: url('//www.skotos.net/IronclawGame/images/skotoslogo.jpg'); height: 98px; background-position: 0 30px;}
+#save_button, #settings_button {display:inline-block; opacity:0.85; padding-left:4px;}
+    #image_map {margin-bottom: 10px; border: 0px solid black;}
+	#image_map_img {border: 3px solid black; height:130px;width:130px; background-position:center center; margin: auto; background-repeat:no-repeat; background-image:url('http://www.skotos.net/IronclawGame/images/map-loading.gif');}
+
+	.comp_button {position:absolute; height:8px; width:8px; border: 0px solid black; opacity: 0.9; z-index:2; background-repeat: no-repeat; margin: auto;}
+
+	#comp_nw {right:126px;	bottom:135px;}
+	#comp_n  {right:64px;	bottom:136px;}
+	#comp_ne {right:1px;	bottom:135px;}
+	#comp_w  {right:128px;	bottom:74px;}
+	#comp_e  {right:3px;	bottom:74px;}
+	#comp_sw {right:126px;	bottom:10px;}
+	#comp_s  {right:64px;	bottom:12px;}
+	#comp_se {right:1px;	bottom:12px;}
+
+.button {
+	width: 130px;
+	display:inline-block;
+	color: #ffffff;
+	font-family: 'Times New Roman', sans-serif;
+	font-weight: 300;
+	position: relative;
+	top: 0px;
+	font-size: 14px;
+ 	padding:0.35em 1.2em;
+ 	margin: auto;
+	text-align: center;
+	text-decoration: none;
+	box-sizing: border-box;
+	transition: all 0.2s;
+}
+
+.button:hover {
+	color: #ffffff;
+	background-color: #D2B15F;
+}
+
+.fas {
+	padding: 0;
+	margin: 0;
+	position: relative;
+	left: 0px;
+	display: inline-block;
+	font-size: 1.5em;
+	float: left;
+	color: #D2B15F;
+	transition: all 0.2s;
+}
+
+.fas:hover {
+	color: #ffffff;
+}
