@@ -1,5 +1,5 @@
 "use strict";
-var conn, viewer, tree, debugtrack, gameCharacter, generic, hasChars, currentFile, currentFolder, removeFile, pageLoad, server;
+var conn, viewer, tree, debugtrack, gameCharacter, generic, hasChars, currentFile, currentFolder, removeFile, pageLoad, server, extra;
 var c = {};
 function initWebSocket(profile) {
 	c = profile;
@@ -16,7 +16,7 @@ function initWebSocket(profile) {
 		generic = true;
 	}
 
-	var extra = '';
+	extra = '';
 	var woe_port = '';
 	var http_port = '';
 
@@ -265,7 +265,7 @@ function doReceive(msg) {
 		var str = lines[i];
 
 		if(str != undefined && str.includes("SET")) {
-			var src = "http://" + server + ":" + port + str.split(/[ ,]+/)[1];
+			var src = "http://" + extra + server + ":" + port + str.split(/[ ,]+/)[1];
 			var file = str.split(/[ ,]+/)[2];
 
 			var folders = file.split(":");
