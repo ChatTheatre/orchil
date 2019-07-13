@@ -36,7 +36,7 @@ var profiles = {
 	"portal_tectest":{
 		"method":   "websocket",
 		"protocol": "ws",
-		"server":   "www.skotos.net",
+		"server":   "skotos.net",
 		"port":      8080,
 		"path":     "/tectest",
 		"extra":    "tec",
@@ -46,7 +46,7 @@ var profiles = {
 	"portal_tec":{
 		"method":   "websocket",
 		"protocol": "ws",
-		"server":   "www.skotos.net",
+		"server":   "skotos.net",
 		"port":      8080,
 		"path":     "/tec",
 		"extra":    "tec",
@@ -56,7 +56,7 @@ var profiles = {
 	"portal_marrach":{
 		"method":   "websocket",
 		"protocol": "ws",
-		"server":   "www.skotos.net",
+		"server":   "skotos.net",
 		"port":      8080,
 		"woe_port":  8084,
 		"path":     "/marrach",
@@ -68,7 +68,7 @@ var profiles = {
 	"portal_grendelsrevenge":{
 		"method":   "websocket",
 		"protocol": "ws",
-		"server":   "www.skotos.net",
+		"server":   "skotos.net",
 		"port":      8080,
 		"path":     "/grendel",
 		"extra":    "gr",
@@ -78,7 +78,7 @@ var profiles = {
 	"portal_lovecraft":{
 		"method":   "websocket",
 		"protocol": "ws",
-		"server":   "www.skotos.net",
+		"server":   "skotos.net",
 		"port":      8080,
 		"woe_port":  8082,
 		"path":     "/lovecraft",
@@ -89,7 +89,7 @@ var profiles = {
 	"portal_ironclaw":{
 		"method":   "websocket",
 		"protocol": "ws",
-		"server":   "www.skotos.net",
+		"server":   "skotos.net",
 		"port":      8080,
 		"woe_port":  8083,
 		"path":     "/ironclaw",
@@ -100,7 +100,7 @@ var profiles = {
 	"portal_lazarus":{
 	"method":   "websocket",
 		"protocol": "ws",
-		"server":   "www.skotos.net",
+		"server":   "skotos.net",
 		"port":      8080,
 		"woe_port":  8081,
 		"path":     "/lazarus",
