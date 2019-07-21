@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<title>Orchil Launcher</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="robots" content="noindex,nofollow">
+	<meta name="author" content="">
+	<meta name="keywords" content="client, prototype, html5">
+	<meta name="description" content="Prototype HTML5 client ">
+	<meta name="viewport" content="initial-scale=1.0">
+	<link type="text/css" href="../orchil.css"         rel="stylesheet">
+	<link type="text/css" href="allegory.css"               rel="stylesheet">
+	<link type="text/css" href="../theme-light.css"    rel="stylesheet"           title="light">
+	<link type="text/css" href="../theme-dark.css"     rel="stylesheet alternate" title="dark">
+	<link type="text/css" href="../theme-dark_hc.css"  rel="stylesheet alternate" title="dark_hc">
+	<link type="text/css" href="../theme-terminal.css" rel="stylesheet alternate" title="terminal">
+	<script type="text/javascript" src="../filesaver.js"></script>
+	<script type="text/javascript" src="../orchil.js"></script>
+	<script type="text/javascript" src="../profiles.js"></script>
+	<script type="text/javascript" src="../md5.js"></script>
+	<script type="text/javascript" src="allegory.js"></script>
+	<script type="text/javascript">
+		<!--
+		function initConnection() {
+			initWebSocket(profiles.portal_allegory);
+		}
+		//-->
+	</script>
+</head>
+<body id="body">
+	<div id="mainclient">
+		<div id="left" class="sidebar">
+            <div id="environment">
+                <div id="status">
+                    <fieldset>
+                        <legend>Status</legend>
+                        <a title="@condition 'health'" id="elementShowHealth" onclick="inputCmd(this);">
+                            <div class="status_bar" title="Health">
+                                <div title="Health" id="health"></div>
+                                <div style="text-align: center; font-size:12px; font-weight:bold; position:relative; top: -14px;"></div>
+                            </div>
+                            <div id="health_text"></div>
+                        </a>
+
+                        <a title="@condition 'energy'" id="elementShowEnergy" onclick="inputCmd(this);">
+                            <div class="status_bar" title="Energy">
+                                <div title="Energy" id="energy"></div>
+                                <div style=" text-align: center; font-size:12px; font-weight:bold; position:relative; top: -14px;"></div>
+                            </div>
+                            <div id="energy_text"></div>
+                        </a>
+
+                        <a title="@condition 'hunger'" id="elementShowHunger" onclick="inputCmd(this);">
+                            <div class="status_bar" title="Hunger">
+                                <div title="Hunger" id="hunger"></div>
+                                <div style=" text-align: center; font-size:12px; font-weight:bold; position:relative; top: -14px;"></div>
+                            </div>
+                            <div id="hunger_text"></div>
+                        </a>
+                    </fieldset>
+                </div>
+                <div id="time">
+                    <img id="time-icon" class="icon" src="./icons/time/day.png"/>
+                </div>
+                <div id="weather">
+                    <img id="weather-icon" class="icon" src="./icons/weather/rain.png"/>
+                </div>
+                <div id="wind">
+                    <img id="wind-icon" class="icon" src="./icons/weather/wind.png"/>
+                </div>
+            </div>
+        </div>
+		<div id="core">
+			<noscript>Notice: You don't seem to have JavaScript turned on.  JavaScript is required for the client to function.</noscript>
+			<div id="output" class="selectable light"></div>
+			<div id="inputwrapper">
+				<textarea id="commandinput" class="selectable" autocomplete="off" autocapitalize="off" spellcheck="true" autocorrect="off" autofocus disabled></textarea>
+				<div id="inputsizer"></div>
+			</div>
+		</div>
+		<div id="right" class="sidebar">
+ 
+        </div>
+    </div>
+</body>
+</html>
