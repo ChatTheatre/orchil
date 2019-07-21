@@ -96,6 +96,17 @@ var profiles = {
 		"extra":    "ironclaw",
 		"reports":  false,
 		"chars":    true,
+	},	
+    "portal_allegory":{
+		"method":   "websocket",
+		"protocol": "ws",
+		"server":   "skotos.net",
+		"port":      8080,
+		"woe_port":  8083,
+		"path":     "/ironclaw",
+		"extra":    "ironclaw",
+		"reports":  false,
+		"chars":    true,
 	},
 	"portal_lazarus":{
 	"method":   "websocket",

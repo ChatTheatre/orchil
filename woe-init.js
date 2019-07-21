@@ -41,9 +41,14 @@ function initWebSocket(profile) {
 	}
 
 	document.getElementById("view").src = "http://" + extra + server + ":" + http_port + "/Dev/View.sam";
+    
+    console.log(document.getElementById("view").src);
 
-
-	var wsuri = profile.protocol + "://" + extra + server + ":" + woe_port + "/woe";
+	//var wsuri = profile.protocol + "://" + extra + server + ":" + woe_port + "/woe";
+    
+    var wsuri = profile.protocol + "://" + server + ":" + woe_port + "/woe";
+    
+    console.log(wsuri);
 	
 	try {
 		conn = new WebSocket(wsuri);
@@ -249,6 +254,8 @@ var currentSubElements = [];
 var receiveActive = false;
 var loginDone = false;
 function doReceive(msg) {
+    console.log(msg);
+    
 	receiveActive = true;
 
 	var port;
