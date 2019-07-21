@@ -11,6 +11,55 @@
     background-size: 136px;
 }
 
+.fas {
+	padding: 0;
+	margin: 0;
+	position: relative;
+	left: 0px;
+	display: inline-block;
+	font-size: 1.5em;
+	float: left;
+	color: #000000;
+	transition: all 0.2s;
+}
+
+.fas:hover {
+    color: #ffffff;
+}
+
+#help {
+    padding-top: 10px;
+}
+
+.button {
+	width: 130px;
+	display:inline-block;
+	color: #000000;
+	font-family: 'Times New Roman', sans-serif;
+	font-weight: 300;
+    font-weight: bold;
+	position: relative;
+	top: 0px;
+	font-size: 14px;
+ 	padding:0.35em 1.2em;
+ 	margin: auto;
+	text-align: center;
+	text-decoration: none;
+	box-sizing: border-box;
+	transition: all 0.2s;
+    border: 1px solid black;
+    background: #f3da9a;
+}
+
+.button:hover {
+	color: #ffffff;
+	background-color: #000000;
+}
+
+#menublock {
+    display: block;
+}
+
 legend {
     font-weight: bolder;
     font-size: 16px;
@@ -128,11 +177,10 @@ legend {
 }
 
 #chat_theatre {}
-#clientui {padding-right:33px; padding-top:4px;}
+#clientui {margin: auto; padding-top:4px;}
 	/* #skotos_logo {background-image: url('//www.skotos.net/IronclawGame/images/skotoslogo.jpg'); height: 66px;} */
-	#skotos_logo {height: 66px;}
 	#newplayers { display:inline-block; margin: auto; position: relative; top: 0px;}
-	#save_button, #settings_button {display: inline-block; opacity:0.85; margin: 4px; position: relative; top: 0px;}
+	#save_button, #settings_button, #menu_button {display: inline-block; opacity:0.85; margin: 4px; position: relative; top: 0px;}
 
     #image_map {margin-bottom: 10px; border: 0px solid black;}
 	#image_map_img {border: 0px solid black; height:130px;width:130px; background-position:center center; margin: auto; background-repeat:no-repeat; background-image:url('http://www.skotos.net/IronclawGame/images/map-loading.gif');}

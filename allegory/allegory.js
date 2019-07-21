@@ -2,12 +2,16 @@
 //-----Component Setup
 	var bigMapHREF;
 	function initTheatre() {
-		addComponent('skotos_logo'    , 'right'   , false);
-		addComponent('clientui'       , 'skotos_logo');
-		addComponent('save_button'  , 'clientui', false, 'saveCurrentWindow', [], '<img alt="Save Log" title="Save Log" src="http://test.skotos.net/orchil/marrach/log.png">');
-		addComponent('settings_button', 'clientui', false, 'openSettings', [], '<img alt="Settings" title="Settings" src="http://test.skotos.net/orchil/marrach/settings.png">');
-		addComponent('newplayers'     , 'right'   , false, 'openerWin', ['http://ironclaw.skotos.net/Ironclaw/starting.sam'], '<img alt="Getting Started" src="http://www.skotos.net/CastleMarrachGame/images/started.gif">');
-		addComponent('newplayers'     , 'right'   , false, 'openerWin', ['http://ironclaw.skotos.net/Ironclaw/mastering.sam'], '<img alt="Mastering Chat" src="http://www.skotos.net/CastleMarrachGame/images/mastering.gif">');        
+		addComponent('clientui'       , 'right', false);
+		addComponent('save_button'  , 'clientui', false, 'saveCurrentWindow', [], '<i class="fas fa-file-download" title="Save Log"></i>', 'Save Log');
+		addComponent('settings_button', 'clientui', false, 'openSettings', [], '<i class="fas fa-cog" title="Client Preferences"></i>', 'Client Preferences');
+		addComponent('menu_button', 'clientui', false, 'toggleMenu', [], '<i class="fas fa-bars" title="Toggle Links"></i>', 'Toggle Links');
+        
+        addComponent('menublock', 'right', false);
+		addComponent('help'     , 'menublock'   , false, 'openerWin', ['http://wp.skotos.net/ironclaw/help/'], '<div class="button" title="Help Files">Help Files</div>');
+		addComponent('events'     , 'menublock'   , false, 'openerWin', ['http://wp.skotos.net/ironclaw/events/'], '<div class="button" title="Current Events">Current Events</div>');
+		addComponent('vote_allegory'       , 'menublock'   , false, 'openerWin', ['http://www.topmudsites.com/vote-ironclaw.html'], '<div class="button" alt="Vote for Allegory of the Empires" title="Vote for Allegory of the Empires on TopMudSites">Vote for Allegory</div>');   
+        
         document.getElementById('left').appendChild(document.getElementById('status'));
         document.getElementById('left').appendChild(document.getElementById('environment'));
         
@@ -29,6 +33,16 @@
 		}
 */
 	}
+
+    function toggleMenu() {
+        var status = document.getElementById('menublock').style.display;
+        
+        if(status == 'none') {
+            document.getElementById('menublock').style.display = 'block';
+        } else {
+            document.getElementById('menublock').style.display = 'none';          
+        }
+    }
 
     function inputCmd(element) {
         document.getElementById('commandinput').value=element.title;
