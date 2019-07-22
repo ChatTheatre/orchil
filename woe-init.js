@@ -44,9 +44,7 @@ function initWebSocket(profile) {
     
     console.log(document.getElementById("view").src);
 
-	//var wsuri = profile.protocol + "://" + extra + server + ":" + woe_port + "/woe";
-    
-    var wsuri = profile.protocol + "://" + server + ":" + woe_port + "/woe";
+    var wsuri = profile.protocol + "://" + server + ":" + woe_port;
     
     console.log(wsuri);
 	
