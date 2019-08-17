@@ -87,7 +87,6 @@
 	   		popupWin(msg, "SkotosToolSourceView", 800, 600);
 			break;
 		case 80:
-			alert(msg);
 			document.getElementById("right").update(msg);
 			break;
 		default:
