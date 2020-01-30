@@ -255,7 +255,7 @@ Again, `listen` port should be __Port-T__, which should match the upstream port 
 ### 2.5 Open Up More Ports
 
 At this point you may need to open more ports, for the ports referenced by the tunnel (__Port-T__ and possibly __Port-TW__):
-```
+
 **SkotOS Example:**
 
 ```
