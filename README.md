@@ -229,10 +229,10 @@ Note that `sendTunnelInfo` is always `false` for SkotOS machines: they can't han
 ```
 Again, `listen` port should match the upstream port from `nginx` and `host` should be the game's hostname, while the `send` port should be its standard port (6730 for TEC). Note that `sendTunnelInfo` is `true` for Genesis games: they _can_ handle it.
 
-### 2.5 Open Up More Ports (SkotOS Only)
+### 2.5 Open Up More Ports
 
 At this point you may need to open more ports, for the ports referenced by the tunnel:
-``
+```
 **SkotOS Example:**
 
 ```
