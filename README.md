@@ -15,7 +15,29 @@ The HTML client allows users to connect to SkotOS games (and Genesis games!) usi
 3. `nginx` adjusts the connection and forwards it on a `websocket-to-tcp-tunnel` using a port number such as 8081, stored under an `upstream` section, as defined in the `default` site for `nginx`.
 4. The `websocket-to-tcp-tunnel` listens for that port, based on its own `config.json`.
 
-The following describes how to set up this series of tubes.
+## -1. Plan Your Ports
+
+You should plan out your ports in advance, so that you know how to write your config files.
+
+Fill out the following worksheet, using the default values given in parentheses, or your own values, as you prefer:
+
+<pre>
+Port-A: `apache` Port: __________ (80) 
+Port-N: `nginx` Port: __________ (8080)
+Port-N1: `nginx` Suffix: _________ (/game)
+Port-T: Tunnel Game Port: __________ (8081)
+Port-TW: Tunnel Woe Port: __________ (8082)
+</pre>
+
+The rest of this doc describes how to set up this series of tubes.
+
+<pre>
+__Game:__
+Client (apache @ Port-A) -> Nginx (@Port-N/Port-N1) -> Tunnel (@Port-T)
+
+__Woe:__
+Client (apache @ Port-A) -> Tunnel (@Port-TW)
+</pre>
 
 ## 0. Upgrade to Stretch (Debian 9)
 
@@ -64,7 +86,7 @@ map $http_upgrade $connection_upgrade {
         }
 
 upstream lazarus {
-    server 127.0.0.1:8085;
+    server 127.0.0.1:8081;
 }
 
 server {
@@ -90,7 +112,7 @@ map $http_upgrade $connection_upgrade {
         }
 
 upstream tec {
-    server 127.0.0.1:8082;
+    server 127.0.0.1:8081;
 }
 
 server {
@@ -106,17 +128,15 @@ server {
 }
 
 ```
-This example will answer connections sent to "8080/tec" and send them on to a tunnel program sitting at port 8082 of the local machine.
+This example will answer connections sent to "8080/lazarus" (in the SkotOS example) or "8080/tec" (in the Genesis example) and send them on to a tunnel program sitting at port 8081 of the local machine. This is the standard alternate port for HTML, and is the best place to put `nginx`, but if you chose a different value for __Port-N__, use that instead.
 
-Change the name "tec" for the name of your game. Be sure to change all of the location, the proxy_pass, and the upstream. It should match the `path` name that you set in the `profiles.js` file of your client.
+Change the name "lazarus" or "tec" for the name of your game, using the value you set for __Port-N1__. The `location` is the one that matters, because your client will use that to talk to `nginx`; you'll set it again there. But, you should also change `proxy_pass` and `upstream` for consistency.
 
-Change the port "8082" to match the port that you set in the `config.json` file of your tunnel.
-
-(Both of these pieces of software will be installed on future steps. If you're not sure about how to set things, just choose a simple version of your game name and port 8081, and then make sure those other config files match.)
+Change the port "8081" to match the port that you set for __Port-T__. You'll see it again when you create the configuration for the tunnel. If you are connecting to a SkotOS machine, you may note that there is no connection for the Tree of Woe here. That is correct: the connection for the game goes from the client to `nginx` to the tunnel, but the connection for Woe goes straight from the client to the tunnel.
 
 ### 1.3 Open Nginx Port
 
-If you have a firewall, you must open port 8080 so that `nginx` can respond to non-local connections:
+If you have a firewall, you must open port 8080 (or your alternate __Port-N__) so that `nginx` can respond to non-local connections:
 ```
 -A INPUT -p tcp --dport 8080 -j ACCEPT
 ```
@@ -155,6 +175,8 @@ The tunnel is written in `node.js`, so that needs to be installed as well:
 $ curl -sL https://deb.nodesource.com/setup_9.x | bash -
 $ apt install nodejs
 ```
+Warning: NodeJS 9 is now out of date. It's likely better to use `setup_10.x`, but that has not yet been tested.
+
 ### 2.3 Install the Tunnel
 
 Clone the repo:
@@ -186,25 +208,26 @@ Create a `/usr/local/websocket-to-tcp-tunnel/config.json` file.
     "servers": [
   {
     "name": "lazarus",
-    "listen": 8085,
+    "listen": 8081,
     "send": 443,
     "host": "lazarus-game.skotos.net",
     "sendTunnelInfo": false
   },
   {
     "name": "Lazarus Tree of Woe",
-    "listen": 8081,
+    "listen": 8082,
     "send": 2090,
     "host": "lazarus-game.skotos.net",
     "sendTunnelInfo": false
   }
 ]
 
-}```
+}
+```
 
 Note that for a SkotOS game, you're running two tunnels, one for the client (at a port defined in the `nginx`) and one for the Tree of Woe (at a port defined in the client).
 
-The `host` should be the game's hostname, while the `send` port should be its standard port (for SkotOS games, usually 443, and for SkotOS WOE, usually XX90)
+The `host` should be the game's hostname, while the `send` port should be its standard port (for SkotOS games, usually 443, and for SkotOS WOE, usually XX90). The `listen` ports should be set to __Port-T__ and _Port-TW__.
 
 Note that `sendTunnelInfo` is always `false` for SkotOS machines: they can't handle it.
 
@@ -218,7 +241,7 @@ Note that `sendTunnelInfo` is always `false` for SkotOS machines: they can't han
     "servers": [
   {
     "name": "tec",
-    "listen": 8082,
+    "listen": 8081,
     "send": 6730,
     "host": "tec.skotos.net",
     "sendTunnelInfo": true
@@ -227,26 +250,25 @@ Note that `sendTunnelInfo` is always `false` for SkotOS machines: they can't han
 
 }
 ```
-Again, `listen` port should match the upstream port from `nginx` and `host` should be the game's hostname, while the `send` port should be its standard port (6730 for TEC). Note that `sendTunnelInfo` is `true` for Genesis games: they _can_ handle it.
+Again, `listen` port should be __Port-T__, which should match the upstream port from `nginx` and `host` should be the game's hostname, while the `send` port should be its standard port (6730 for TEC). Note that `sendTunnelInfo` is `true` for Genesis games: they _can_ handle it.
 
 ### 2.5 Open Up More Ports
 
-At this point you may need to open more ports, for the ports referenced by the tunnel:
+At this point you may need to open more ports, for the ports referenced by the tunnel (__Port-T__ and possibly __Port-TW__):
 ```
 **SkotOS Example:**
 
 ```
 -A INPUT -p tcp --dport 8081 -j ACCEPT
--A INPUT -p tcp --dport 8085 -j ACCEPT
+-A INPUT -p tcp --dport 8082 -j ACCEPT
 
 ```
 **Genesis Example:**
 
 ```
--A INPUT -p tcp --dport 8082 -j ACCEPT
+-A INPUT -p tcp --dport 8081 -j ACCEPT
 ```
 The _may_ relates to which IP addresses you are using to connect from the client and `nginx` to the tunnel, and whether those addresses are local or not. But, you'll often need to do this. When in doubt, do it, and then you can test later if you can remove them.
-
 
 Afterward, be sure to restart your firewall, with a command such as:
 ```
@@ -322,7 +344,7 @@ You're now ready to install the client, which also comes from GitHub:
 ```
 $ git clone https://github.com/skotostech/orchil /var/www/html/client
 ```
-You will probably need to adjust `profiles.js` to include the connections for your client and your WOE.
+You will probably need to adjust `profiles.js` to include the connections for your client and your WOE. Here you're going to need to match __Port-N__ (for `port`), __Port-N1__ (for `path`), and on a SkotOS machine __Port-TW__ (for `woe_port). Obviously, the `server` will match where `nginx` is running.
 
 **SkotOS Example:**
 ```
@@ -332,7 +354,7 @@ var profiles = {
                 "protocol": "ws",
                 "server":   "lazarus.skotos.net",
                 "port":      8080,
-                "woe_port":  8081,
+                "woe_port":  8082,
                 "path":     "/lazarus",
                 "extra":    "",
                 "reports":   false,
@@ -356,7 +378,6 @@ var profiles = {
 	}
 }
 ```
-Note that your `server` should match where you're running `nginx`, your `port` should match its port, and your `path` should match the `location` set in `nginx`.
 
 ## 5. Install Apache
 
@@ -396,6 +417,7 @@ Then enable it:
 $ a2ensite client
 Enabling site client.
 ```
+It would be very unusual to not be using port 80 for __Port-A__, because that's the standard for web browsers. But, if you had to change that for some reason, you'd do it here and in the later sections.
 
 ### 5.3 Setup Your Apache for a Secondary IP (optional)
 
