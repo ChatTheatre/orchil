@@ -42,11 +42,11 @@ Nginx is a web proxy that will allow you to grab web connections intended for th
 ### 1.1 Install Nginx
 Make sure your cache is up to date before doing any linux installs:
 ```
-# apt-get update
+$ apt-get update
 ```
 Then install the nginx package:
 ```
-# apt-get install nginx-full
+$ apt-get install nginx-full
 ```
 By default, nginx will try to bind to port 80, and may well fail depending on your site's setup. No worries, you'll be setting it to a less privileged port.
 
@@ -145,16 +145,16 @@ The tunnel is installed on Github, so for easy updates, we'll be installing `git
 
 Install git:
 ```
-# apt-get install git
+$ apt-get install git
 ```
 
 ### 2.2 Install Node.js
 
 The tunnel is written in `node.js`, so that needs to be installed as well:
 ```
-# curl -sL https://deb.nodesource.com/setup_9.x | bash -
-# apt install nodejs
-
+$ curl -sL https://deb.nodesource.com/setup_9.x | bash -
+$ apt install nodejs
+```
 ### 2.3 Install the Tunnel
 
 Clone the repo:
@@ -258,15 +258,15 @@ iptables-restore < /etc/iptables.firewall.rules
 
 Make a directory for your logs that matches the `logDirectory` in the preferences and be sure it's owned by your web server user.
 ```
-# mkdir /var/log/tunnel
-# chown www-data.www-data /var/log/tunnel
+$ mkdir /var/log/tunnel
+$ chown www-data.www-data /var/log/tunnel
 ```
 
 ### 2.7 Start the Tunnel
 
 You should be able to start the tunnel from the appropriate user by running the process that checks if the tunnel is running:
 ```
-# sudo -u www-data /usr/local/websocket-to-tcp-tunnel/search-tunnel.sh
+$ sudo -u www-data /usr/local/websocket-to-tcp-tunnel/search-tunnel.sh
 ```
 
 ### 2.8 Update Your Crontab
@@ -274,7 +274,7 @@ You should be able to start the tunnel from the appropriate user by running the 
 Finally, update your crontab for your `www-data` or other web server user to start the tunnel at bootup and to check that it's running every minute:
 
 ```
-# crontab -u www-data -e
+$ crontab -u www-data -e
 @reboot /usr/local/websocket-to-tcp-tunnel/start-tunnel.sh
 * * * * * /usr/local/websocket-to-tcp-tunnel/search-tunnel.sh
 ```
@@ -291,7 +291,7 @@ The exact methodology for this will vary from site to site. At Linode, you need 
 
 Once you've got a new IP on your machine, you can add it to your `interfaces`:
 ```
-# cat >> /etc/network/interfaces
+$ cat >> /etc/network/interfaces
 # ====================================================================
 # Web IP
 # ====================================================================
@@ -320,7 +320,7 @@ The client is the actual HTML5 program which allows players to play your game. I
 
 You're now ready to install the client, which also comes from GitHub:
 ```
-# git clone https://github.com/skotostech/orchil /var/www/html/client
+$ git clone https://github.com/skotostech/orchil /var/www/html/client
 ```
 You will probably need to adjust `profiles.js` to include the connections for your client and your WOE.
 
@@ -366,7 +366,7 @@ Apache is needed to serve the client.
 
 Install the package using `apt-get`.
 ```
-# apt-get install apache2
+$ apt-get install apache2
 ```
 If you're installing on a SkotOS machine, you'll probably see errors in the install. They just have to do with `apache2` not being able to start because port 80 is already in use; no worries, you'll resolve that in the next step.
 
@@ -393,7 +393,7 @@ You'll need to set up an apache site for the client (unless you're planning to a
 ```
 Then enable it:
 ```
-# a2ensite client
+$ a2ensite client
 Enabling site client.
 ```
 
@@ -418,7 +418,7 @@ If you already have other IP addresses on this `apache`, just add the new one as
 
 You can now start `apache`:
 ```
-# /etc/init.d/apache2 start
+$ /etc/init.d/apache2 start
 ```
 
 ## 6. Add the Client to Your Game
@@ -456,7 +456,7 @@ And your client is now ready to go!
 
 At some time you may hear that the client or the web tunnel was updated. If so, you'll need to go to the directory that has that repo installed and update it. This is how to update the client:
 ```
-# cd /var/www/html/client
-# git pull
+$ cd /var/www/html/client
+$ git pull
 ```
 
