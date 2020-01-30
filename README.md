@@ -39,6 +39,7 @@ If you are not using stretch or better, you will need to [upgrade](https://linux
 
 Nginx is a web proxy that will allow you to grab web connections intended for the client (and Woe).
 
+### 1.1 Install Nginx
 Make sure your cache is up to date before doing any linux installs:
 ```
 # apt-get update
@@ -49,7 +50,7 @@ Then install the nginx package:
 ```
 By default, nginx will try to bind to port 80, and may well fail depending on your site's setup. No worries, you'll be setting it to a less privileged port.
 
-### 1.1 Install Nginx Preferences
+### 1.2 Install Nginx Preferences
 
 Edit /etc/nginx/sites-available/default.
 
@@ -113,7 +114,7 @@ Change the port "8082" to match the port that you set in the `config.json` file 
 
 (Both of these pieces of software will be installed on future steps. If you're not sure about how to set things, just choose a simple version of your game name and port 8081, and then make sure those other config files match.)
 
-### 1.2 Open Nginx Port
+### 1.3 Open Nginx Port
 
 If you have a firewall, you must open port 8080 so that `nginx` can respond to non-local connections:
 ```
@@ -126,7 +127,7 @@ iptables-restore < /etc/iptables.firewall.rules
 ```
 (The specifics will vary based on your setup. This example presumes that your firewall rules are kept in `/etc/iptables.firewall.rules`.)
 
-### 1.3 Start Nginx
+### 1.4 Start Nginx
 
 You can now start `nginx`. It should now also correctly auto-start on reboot:
 ```
@@ -158,18 +159,17 @@ The tunnel is written in `node.js`, so that needs to be installed as well:
 
 Clone the repo:
 ```
-# git clone https://github.com/skotostech/websocket-to-tcp-tunnel /usr/local/websocket-to-tcp-tunnel
-
+$ git clone https://github.com/skotostech/websocket-to-tcp-tunnel /usr/local/websocket-to-tcp-tunnel
 ```
 You also need to install specific `node.js` packages:
 ```
-# cd /usr/local/websocket-to-tcp-tunnel/
-# npm install
-# chmod a+x *.sh
+$ cd /usr/local/websocket-to-tcp-tunnel/
+$ npm install
+$ chmod a+x *.sh
 ```
 Finally, adjust the permissions of the tunnel to be owned by your web server user:
 ```
-# chown -R www-data.www-data /usr/local/websocket-to-tcp-tunnel/
+$ chown -R www-data.www-data /usr/local/websocket-to-tcp-tunnel/
 ```
 
 ### 2.4 Install Tunnel Preferences
