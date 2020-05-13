@@ -7,8 +7,8 @@
 		addComponent('clientui'       , 'skotos_logo');
 		addComponent('save_button'  , 'clientui', false, 'saveCurrentWindow', [], '<i class="fas fa-file-download"></i>', 'Save Log');
 		addComponent('settings_button', 'clientui', false, 'openSettings', [], '<i class="fas fa-bars"></i>', 'Client Preferences');
-		addComponent('newplayers'     , 'right'   , false, 'openerWin', ['http://lazarus.skotos.net/Theatre/starting.sam'], '<div class="button" title="Getting Started">Getting Started</div>');
-		addComponent('newplayers'     , 'right'   , false, 'openerWin', ['http://lazarus.skotos.net/Theatre/mastering.sam'], '<div class="button" title="Mastering Chat">Mastering Chat</div>');
+		addComponent('newplayers'     , 'right'   , false, 'openerWin', ['http://game.multirev.net/Theatre/starting.sam'], '<div class="button" title="Getting Started">Getting Started</div>');
+		addComponent('newplayers'     , 'right'   , false, 'openerWin', ['http://game.multirev.net/Theatre/mastering.sam'], '<div class="button" title="Mastering Chat">Mastering Chat</div>');
 		addComponent('vote_ico'       , 'right'   , false, 'openerWin', ['http://www.topmudsites.com/vote-lazarus.html'], '<div class="button" alt="Vote for Lazarus" title="Vote for Lazarus on TopMudSites">Vote for Lazarus</div>');
 		addComponent('right_fill'     , 'right'   , 'fill');
 		addComponent('image_map'      , 'right'   , false, 'popupMapWindow', [event]);
@@ -30,9 +30,9 @@
 
 	function updateCompass(bitfield, image, dir, bit) {
 		if (bitfield & bit) {
-  	    	image.style.backgroundImage = "url(http://www.skotos.net/LazarusGame/images/arrows/" + dir + "-ex.gif)";
+  	    	image.style.backgroundImage = "url(http://images.multirev.net/arrows/" + dir + "-ex.gif)";
 		} else {
-	    	image.style.backgroundImage = "url(http://www.skotos.net/LazarusGame/images/arrows/" + dir + "-noex.gif)";
+	    	image.style.backgroundImage = "url(http://images.multirev.net/" + dir + "-noex.gif)";
 		}
     }
 //-----Component Functionality
@@ -355,7 +355,7 @@
             i = filename.indexOf(' ');
 		}
 
-		artwin = window.open('http://lazarus.skotos.net/Theatre/Art.sam?url=' +
+		artwin = window.open('http://game.multirev.net/Theatre/Art.sam?url=' +
                                  escape(filename) + '&title=' +
 				 escape(windowtitle), windowname,
 				 'width=100,height=100,left=' + scrLeft +
