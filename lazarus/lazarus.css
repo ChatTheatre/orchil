@@ -1,8 +1,8 @@
-#left {background-image:url('http://www.skotos.net/LazarusGame/images/edgeleft.jpg');}
-#right {background-image:url('http://www.skotos.net/LazarusGame/images/edgeright.jpg');}
+#left {background-image:url('http://images.multirev.net/edgeleft.jpg');}
+#right {background-image:url('http://images.multirev.net/edgeright.jpg');}
 #chat_theatre {}
 #clientui {padding-top: 10px; padding-left: 0px; float: left;}
-#skotos_logo {background-color: black; background-image: url('http://www.skotos.net/LazarusGame/images/skotoslogo.jpg'); background-position: center 25px; background-repeat:no-repeat; height: 98px; margin-bottom: 10px;}
+#skotos_logo {background-color: black; background-image: url('http://images.multirev.net/skotoslogo.jpg'); background-position: center 25px; background-repeat:no-repeat; height: 98px; margin-bottom: 10px;}
 #save_button, #settings_button {display:inline-block; opacity:0.85; padding-left:4px;}
 
     #image_map {margin-bottom: 10px; border: 3px solid black; background: black;}
