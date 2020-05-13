@@ -111,11 +111,11 @@ var profiles = {
 	"portal_lazarus":{
 	"method":   "websocket",
 		"protocol": "ws",
-		"server":   "skotos.net",
+		"server":   "multirev.net",
 		"port":      8080,
 		"woe_port":  8081,
 		"path":     "/lazarus",
-		"extra":    "lazarus",
+		"extra":    "game",
 		"reports":   false,
 		"chars":     true
 	}
