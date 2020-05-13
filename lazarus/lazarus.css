@@ -6,7 +6,7 @@
 #save_button, #settings_button {display:inline-block; opacity:0.85; padding-left:4px;}
 
     #image_map {margin-bottom: 10px; border: 3px solid black; background: black;}
-	#image_map_img {border: 0px solid black; height:130px;width:130px; background-position:center center; margin: auto; background-repeat:no-repeat; background-image:url('http://www.skotos.net/CastleMarrachGame/images/map-loading.gif');}
+	#image_map_img {border: 0px solid black; height:130px;width:130px; background-position:center center; margin: auto; background-repeat:no-repeat; background-image:url('http://images.multirev.net/map-loading.gif');}
 	.comp_button {position:absolute; height:13px; width:14px; border: 0px solid black; opacity: 0.9; z-index:2; background-repeat: no-repeat; margin: auto;}
 
 	#comp_nw {right:120px;	bottom:130px;}
