@@ -2,14 +2,14 @@
 //-----Component Setup
 	var bigMapHREF;
 	function initTheatre() {
-		addComponent('chat_theatre'   , 'left'    , false, 'openerWin', ['http://marrach.skotos.net/'], '<img alt="Grand Theatre" src="http://www.skotos.net/CastleMarrachGame/images/gamelogo.gif">');
+		addComponent('chat_theatre'   , 'left'    , false, 'openerWin', ['http://marrach.skotos.net/'], '<img alt="Grand Theatre" src="http://images.marrach.com/gamelogo.gif">');
 		addComponent('skotos_logo'    , 'right');
 		addComponent('clientui'       , 'skotos_logo');
 		addComponent('save_button'  , 'clientui', false, 'saveCurrentWindow', [], '<img alt="Save Log" title="Save Log" src="log.png">');
 		addComponent('settings_button', 'clientui', false, 'openSettings', [], '<img alt="Settings" title="Settings" src="settings.png">');
-		addComponent('newplayers'     , 'right'   , false, 'openerWin', ['http://marrach.skotos.net/Marrach/starting.sam'], '<img alt="Getting Started" src="http://www.skotos.net/CastleMarrachGame/images/started.gif">');
-		addComponent('newplayers'     , 'right'   , false, 'openerWin', ['http://marrach.skotos.net/Marrach/mastering.sam'], '<img alt="Mastering Chat" src="http://www.skotos.net/CastleMarrachGame/images/mastering.gif">');
-		addComponent('vote_cm'       , 'right'   , false, 'openerWin', ['http://www.topmudsites.com/vote-skotos.html'], '<img alt="Vote for Castle Marrach" title="Vote for Castle Marrach on TopMudSites" src="http://www.skotos.net/CastleMarrachGame/images/votemarrach_button.jpg">');
+		addComponent('newplayers'     , 'right'   , false, 'openerWin', ['http://game.marrach.com/Marrach/starting.sam'], '<img alt="Getting Started" src="http://www.skotos.net/CastleMarrachGame/images/started.gif">');
+		addComponent('newplayers'     , 'right'   , false, 'openerWin', ['http://game.marrach.com/Marrach/mastering.sam'], '<img alt="Mastering Chat" src="http://www.skotos.net/CastleMarrachGame/images/mastering.gif">');
+		addComponent('vote_cm'       , 'right'   , false, 'openerWin', ['http://www.topmudsites.com/vote-skotos.html'], '<img alt="Vote for Castle Marrach" title="Vote for Castle Marrach on TopMudSites" src="http://images.marrach.com/votemarrach_button.jpg">');
 		addComponent('right_fill'     , 'right'   , 'fill');
 		addComponent('image_map'      , 'right'   , false, 'popupMapWindow', []);
 		addComponent('image_map_img'  , 'image_map', false);
@@ -26,9 +26,9 @@
 	function updateCompass(bitfield, image, dir, bit) {
 
 		if (bitfield & bit) {
-  	    	image.style.backgroundImage = "url(http://www.skotos.net/CastleMarrachGame/images/arrows/" + dir + "-ex.gif)";
+  	    	image.style.backgroundImage = "url(http://images.marrach.com/images/arrows/" + dir + "-ex.gif)";
 		} else {
-	    	image.style.backgroundImage = "url(http://www.skotos.net/CastleMarrachGame/images/arrows/" + dir + "-noex.gif)";
+	    	image.style.backgroundImage = "url(http://images.marrach.com/arrows/" + dir + "-noex.gif)";
 		}
     }
 //-----Component Functionality
