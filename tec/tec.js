@@ -1,7 +1,7 @@
 "use strict";
 //-----Component Setup
 	function initTheatre() {
-		addComponent('chat_theatre'   , 'left'    , false, 'openerWin', ['http://www.eternalcitygame.com'], '<img alt="The Eternal City" src="http://https://images.eternalcitygame.com/gamelogo.gif">');
+		addComponent('chat_theatre'   , 'left'    , false, 'openerWin', ['http://www.eternalcitygame.com'], '<img alt="The Eternal City" src="http://images.eternalcitygame.com/gamelogo.gif">');
 		
 		addComponent('left_fill'      , 'left'    , 'fill');
 		addComponent('image_map'      , 'left'    , false, 'popupArtWin', ['http://images.eternalcitygame.com/map.jpg', 'RegionMap', 'Map of Iridine - The Eternal City'],'<img alt="Region Map" src="http://images.eternalcitygame.com/small_map.jpg">');
