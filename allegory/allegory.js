@@ -8,8 +8,8 @@
 		addComponent('menu_button', 'clientui', false, 'toggleMenu', [], '<i class="fas fa-bars" title="Toggle Links"></i>', 'Toggle Links');
         
         addComponent('menublock', 'right', false);
-		addComponent('help'     , 'menublock'   , false, 'openerWin', ['http://wp.skotos.net/ironclaw/help/'], '<div class="button" title="Help Files">Help Files</div>');
-		addComponent('events'     , 'menublock'   , false, 'openerWin', ['http://wp.skotos.net/ironclaw/events/'], '<div class="button" title="Current Events">Current Events</div>');
+		addComponent('help'     , 'menublock'   , false, 'openerWin', ['https://allegoryofempires.com/index.php/wiki/'], '<div class="button" title="Help Files">Help Files</div>');
+		addComponent('events'     , 'menublock'   , false, 'openerWin', ['https://allegoryofempires.com/index.php/events/'], '<div class="button" title="Current Events">Current Events</div>');
 		addComponent('vote_allegory'       , 'menublock'   , false, 'openerWin', ['http://www.topmudsites.com/vote-ironclaw.html'], '<div class="button" alt="Vote for Allegory of the Empires" title="Vote for Allegory of the Empires on TopMudSites">Vote for Allegory</div>');   
         
         document.getElementById('left').appendChild(document.getElementById('status'));
@@ -51,9 +51,9 @@
 	function updateCompass(bitfield, image, dir, bit) {
 
 		if (bitfield & bit) {
-  	    	image.style.backgroundImage = "url(http://www.skotos.net/IronclawGame/images/arrows/" + dir + "-ex.gif)";
+  	    	image.style.backgroundImage = "url(http://images.allegoryofempires.com/arrows/" + dir + "-ex.gif)";
 		} else {
-	    	image.style.backgroundImage = "url(http://www.skotos.net/IronclawGame/images/arrows/" + dir + "-noex.gif)";
+	    	image.style.backgroundImage = "url(http://images.allegoryofempires.com/arrows/" + dir + "-noex.gif)";
 		}
     }
 //-----Component Functionality
