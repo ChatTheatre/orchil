@@ -1,18 +1,17 @@
 "use strict";
 //-----Component Setup
 	function initTheatre() {
-		addComponent('chat_theatre'   , 'left'    , false, 'openerWin', ['http://www.skotos.net/games/eternal-city/'], '<img alt="The Eternal City" src="http://www.skotos.net/TECGame/images/gamelogo.gif">');
+		addComponent('chat_theatre'   , 'left'    , false, 'openerWin', ['http://www.eternalcitygame.com'], '<img alt="The Eternal City" src="http://https://images.eternalcitygame.com/gamelogo.gif">');
 		
 		addComponent('left_fill'      , 'left'    , 'fill');
-		addComponent('image_map'      , 'left'    , false, 'popupArtWin', ['http://www.skotos.net/TECGame/images/map.jpg', 'RegionMap', 'Map of Iridine - The Eternal City'],'<img alt="Region Map" src="http://www.skotos.net/TECGame/images/small_map.jpg">');
+		addComponent('image_map'      , 'left'    , false, 'popupArtWin', ['http://images.eternalcitygame.com/map.jpg', 'RegionMap', 'Map of Iridine - The Eternal City'],'<img alt="Region Map" src="http://images.eternalcitygame.com/small_map.jpg">');
 		//addComponent('vote_tec'       , 'right'   , false, 'openerWin', ['//www.topmudsites.com/cgi-bin/topmuds/rankem.cgi?id=scarlatc'], '<img alt="Vote for the Eternal City" title="Vote for the Eternal City on TopMudSites" src="//www.skotos.net/games/eternal-city/artwork/votenow_btn.gif">');
 		//addComponent('skotos_logo'    , 'right'   , false, 'openerWin', ['//www.skotos.net/'], '<img alt="Skotos Logo" src="//www.skotos.net/TECGame/images/skotoslogo.jpg">');
 		addComponent('clientui'       , 'right');
-			addComponent('skotos_logo'    , 'clientui'   , false, 'openerWin', ['http://www.skotos.net/'], '<img alt="Skotos Logo" src="skotosw.png">');
 			addComponent('save_button', 'clientui', false, 'saveCurrentWindow', [], '<img alt="Save Log" title="Save Log" src="log.png">');
 			addComponent('settings_button', 'clientui', false, 'openSettings', [], '<img alt="Settings" title="Settings" src="settings.png">');
-		addComponent('newplayers'     , 'right'   , false, 'openerWin', ['http://www.skotos.net/games/eternal-city/overview.shtml'], '<img alt="Getting Started" src="http://www.skotos.net/TECGame/images/started.gif">');
-		addComponent('vote_tec'       , 'right'   , false, 'openerWin', ['http://www.topmudsites.com/cgi-bin/topmuds/rankem.cgi?id=scarlatc'], '<img alt="Vote for the Eternal City" title="Vote for the Eternal City on TopMudSites" src="http://www.skotos.net/games/eternal-city/artwork/votenow_btn.gif">');
+		addComponent('newplayers'     , 'right'   , false, 'openerWin', ['http://www.eternalcitygame.com/overview.shtml'], '<img alt="Getting Started" src="http://images.eternalcitygame.com/started.gif">');
+		addComponent('vote_tec'       , 'right'   , false, 'openerWin', ['http://www.topmudsites.com/cgi-bin/topmuds/rankem.cgi?id=scarlatc'], '<img alt="Vote for the Eternal City" title="Vote for the Eternal City on TopMudSites" src="http://www.eternalcitygame.com/artwork/votenow_btn.gif">');
 		addComponent('right_fill'     , 'right'   , 'fill');
 		addComponent('macro_area'     , 'right');
 		for (var i=1;i<=15;i++) {
