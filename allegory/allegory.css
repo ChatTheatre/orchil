@@ -1,5 +1,5 @@
-/* #left {background-image:url('http://www.skotos.net/IronclawGame/images/edgeleft.jpg');}
-#right {background-image:url('http://www.skotos.net/IronclawGame/images/edgeright.jpg');} */
+/* #left {background-image:url('http://images.allegoryofempires.com/edgeleft.jpg');}
+#right {background-image:url('http://images.allegoryofempires.com/edgeright.jpg');} */
 
 #left {
     background: url('./edgeleft.png');
@@ -178,12 +178,12 @@ legend {
 
 #chat_theatre {}
 #clientui {margin: auto; padding-top:4px;}
-	/* #skotos_logo {background-image: url('//www.skotos.net/IronclawGame/images/skotoslogo.jpg'); height: 66px;} */
+	/* #skotos_logo {background-image: url('//images.allegoryofempires.com/skotoslogo.jpg'); height: 66px;} */
 	#newplayers { display:inline-block; margin: auto; position: relative; top: 0px;}
 	#save_button, #settings_button, #menu_button {display: inline-block; opacity:0.85; margin: 4px; position: relative; top: 0px;}
 
     #image_map {margin-bottom: 10px; border: 0px solid black;}
-	#image_map_img {border: 0px solid black; height:130px;width:130px; background-position:center center; margin: auto; background-repeat:no-repeat; background-image:url('http://www.skotos.net/IronclawGame/images/map-loading.gif');}
+	#image_map_img {border: 0px solid black; height:130px;width:130px; background-position:center center; margin: auto; background-repeat:no-repeat; background-image:url('http://images.allegoryofempires.com/map-loading.gif');}
 	.comp_button {position:absolute; height:8px; width:8px; border: 0px solid black; opacity: 0.9; z-index:2; background-repeat: no-repeat; margin: auto;}
 
 	#comp_nw {right:126px;	bottom:135px;}
