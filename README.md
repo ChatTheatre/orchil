@@ -175,7 +175,19 @@ The tunnel is written in `node.js`, so that needs to be installed as well:
 $ curl -sL https://deb.nodesource.com/setup_9.x | bash -
 $ apt install nodejs
 ```
-Warning: NodeJS 9 is now out of date. It's likely better to use `setup_10.x`, but that has not yet been tested.
+Some newer versions of Debian "helpfully" install Nodejs when you ask for 9, and this does not seem to work.
+
+If you have this problem, you need to put:
+```
+Package: *
+Pin: origin deb.nodesource.com
+Pin-Priority: 600
+```
+In: `/etc/apt/preferences.d/nodesource`
+
+And then purge and install noedjs again.
+
+Warning: NodeJS 9 is now out of date. But, the tunnel looks like it needs to be updated.
 
 ### 2.3 Install the Tunnel
 
