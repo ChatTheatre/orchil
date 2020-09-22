@@ -945,6 +945,7 @@ var c = {};
 		function doSend(message, noecho) {
 			if (!conn.connected) return;
 			var debug = false;
+			closeAllSubElements();
 			if (prefs.local_echo === "off") noecho = true;
 			if(!noecho) {
 				if (c.promptStr) {
@@ -1496,6 +1497,10 @@ var c = {};
 		//} else {
 		//	currentSubElements = [];
 		//}
+	}
+	function closeAllSubElements() {
+		currentSubElements.splice(0);
+		plog("Removed all subelements.", currentSubElements);
 	}
 
 	function addToCurrentElement(text) {
