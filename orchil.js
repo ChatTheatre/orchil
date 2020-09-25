@@ -1427,7 +1427,7 @@ var c = {};
 			case 'ALICECOMPAT': //What the servers support by default.
 				parseAliceCompat(line, nonl);
 				break;
-			case 'PRE': //Temporarily in a PRE tag.
+			case 'PRE': //Temporarily in a PRE tag; this seems unused.
 				parsePreTag(line, nonl);
 				break;
 			default:
@@ -1491,12 +1491,6 @@ var c = {};
 			plog("Removed one subelement.", currentSubElements);
 			pos--;
 		}
-		//Dead code, remove later.
-		//if(currentSubElements.length && ["PRE","UL","OL"].indexOf(currentSubElements[0].tagName) !== -1) {
-		//	currentSubElements = [currentSubElements[0]];
-		//} else {
-		//	currentSubElements = [];
-		//}
 	}
 	function closeAllSubElements() {
 		currentSubElements.splice(0);
