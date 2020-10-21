@@ -39,6 +39,8 @@ __Woe:__
 Client (apache @ Port-A) -> Tunnel (@Port-TW)
 </pre>
 
+Note that it's possible to configure this with a "top level" web server of your choice, including a single NGinX configuration that handles top-level web pages and proxying to the tunnels. This guide is written as though Apache is your top-level web server -- as it is for ChatTheatre. It isn't easy to avoid NGinX for the proxy layer, though, because NGinX has unusually good support for websockets.
+
 ## 0. Upgrade to Stretch (Debian 9)
 
 These docs use Stretch (Debian 9) as a foundation. It's likely that any other modern Linux would work about the same.
