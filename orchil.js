@@ -504,18 +504,22 @@ var c = {};
 			hide_sidebar: {
 				cat: "layout",
 				type: ["options"],
-				desc: "Whether to hide one of the sidebars.",
+				desc: "Whether to hide one or both of the sidebars.",
 				def: "none",
 				opt: {
 					none: "Show both sidebars.",
 					auto: "Automatically hide the left sidebar if the client is very narrow.  Not yet implemented.",
 					left: "Hide the left sidebar.",
-					right: "Hide the right sidebar."
+					right: "Hide the right sidebar.",
+					both: "Hide both sidebars."
 				},
 				onChange: function(old) {
 					var x = "";
 					var y = "";
-					if (prefs.hide_sidebar=="left"||prefs.hide_sidebar=="right") {
+					if (prefs.hide_sidebar=="both") {
+						x = "#left, #right {display:none;}";
+						y = "#core {max-width: 100%;}";
+					} else if (prefs.hide_sidebar=="left"||prefs.hide_sidebar=="right") {
 						x = "#"+prefs.hide_sidebar+" {display:none;}";
 						y = "#core {max-width: calc(100% - "+document.getElementById("right").offsetWidth+"px)}";
 					}
