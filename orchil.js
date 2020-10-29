@@ -981,18 +981,19 @@ var c = {};
 		function sendCommand() {
 			var command = replaceBadMSCharacters(getInputValue());
 			var lc = command.toLowerCase();
-			if (lc==="clientpref"||lc==="clientprefs") {
+			if (lc==="clientpref"||lc==="clientprefs"||lc==="@clientpref"||lc==="@clientprefs") {
 				showPrefs();
-			} else if (lc.substring(0,11)==='clientpref ') {
-				var sppos = command.indexOf(" ", 11);
-				if (sppos == -1) {
-					if (command === "clientpref save") {
+			} else if (lc.substring(0,11)==='clientpref '||lc.substring(0,12)==='clientprefs '
+				||lc.substring(0,12)==='@clientpref '||lc.substring(0,13)==='@clientprefs ') {
+				var components = command.split(" ");
+				if (components.length < 3) {
+					if (components[1] === "save") {
 						savePrefs();
 					} else {
 						printUnscreened("Usage: clientpref <preferencename> <value> or clientpref save", "client usererror");
 					}
 				} else {
-					setPref(command.substring(11, sppos), command.substring(sppos + 1));
+					setPref(components[1], components.slice(2, 100).join(" "));
 				}
 			} else {
 				doSend(command);
