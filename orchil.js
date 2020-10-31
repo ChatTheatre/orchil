@@ -1,5 +1,5 @@
 "use strict";
-var conn, output, input, debugtrack, gameCharacter, generic, hasChars;
+var conn, output, input, debugtrack, gameCharacter, generic, hasChars, http_port;
 var c = {};
 //-----Protocol Code
 	function initAJAX(profile) {
@@ -63,6 +63,8 @@ var c = {};
 		if(profile.chars == true) {
 			hasChars = true;
 		}
+        
+        if(profile.http_port) http_port = profile.http_port;
 		
 		var wsuri = profile.protocol + "://" + profile.server + ":" + profile.port + profile.path;
 
@@ -1801,6 +1803,11 @@ var c = {};
 	function popupArtWin(filename, windowname, windowtitle) {
 		var scrLeft = 16 + window.screenLeft;
 		var scrTop  = 16 + window.screenTop;
+        
+        if(http_port) {
+            filename = filename.replace("localhost", "localhost:" + http_port);
+        }
+        
 		document.popups[windowname] = {};
 		document.popups[windowname].src = filename;
 		document.popups[windowname].title = windowtitle;
@@ -1810,6 +1817,10 @@ var c = {};
 	function popupWin(filename, windowname, remWinWdh, remWinHgt) {
 		var scrLeft = parseInt((screen.width / 2) -  (remWinWdh / 2));
 		var scrTop  = parseInt((screen.height / 2) -  (remWinHgt / 2));
+        
+        if(http_port) {
+            filename = filename.replace("localhost", "localhost:" + http_port);
+        }
 		var helpwin =  open(filename, windowname, 'width=' + remWinWdh + ',height=' + remWinHgt + ',left=' + scrLeft + ',top=' + scrTop + 'hotkeys=no,scrollbars=yes,resizable=yes');
 		popupFollowUp(filename, helpwin);
 	}
