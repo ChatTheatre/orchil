@@ -126,7 +126,7 @@ embed {
 	height: 100vh;
 }
 
-#core {
+#core-container {
 	display: inline-block;
 	height: 100%;
 	margin: 0;
