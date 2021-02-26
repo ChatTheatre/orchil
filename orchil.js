@@ -1,5 +1,6 @@
 "use strict";
 var conn, output, input, debugtrack, gameCharacter, generic, hasChars, http_port;
+var currentCharacter, macros;
 var c = {};
 //-----Protocol Code
 	function initAJAX(profile) {
@@ -13,7 +14,7 @@ var c = {};
 			push: function () {
 				if (this.busy != false) {
 					return false;
-				}f
+				}
 				if (this.queue.length < 1) {
 					return false;
 				}
@@ -789,8 +790,80 @@ var c = {};
 				printUnscreened("Local storage not found, not saving preferences in local storage.", "client");
 			}
 		}
+		function saveMacros() {
+			var toSave = JSON.stringify(macros);
+			if(localStorage && localStorage.setItem) {
+				printUnscreened("Attempting to save macros for character " + currentCharacter + " in local storage...", "client");
+				localStorage.setItem("macros-" + currentCharacter, toSave);
+				if (localStorage.getItem("macros-" + currentCharacter) != toSave) {
+					printScreened("Saving macros to local storage failed.", "client error");
+				} else {
+					printScreened("Macros appear to have been successfully saved.", "client");
+				}
+			} else {
+				printUnscreened("Local storage not found, not saving macros in local storage.", "client");
+			}
+		}
+		// Based on http://code.is-here.com/zealotry/trunk/content/macro.js, function applyMacros
+		function macroSubstitute(remainingInput) {
+			var expansions = 0;
+			var argsToDo = 0;
+
+			var done = "";
+			var arr;
+			var argCount = 0;
+
+			// fetch the next word
+			while (arr = (/([a-zA-Z0-9_]+)/).exec(remainingInput)) {
+				// any bits to the left of that word are added verbatim
+				done += RegExp.leftContext;
+				remainingInput = RegExp.rightContext;
+				var word = arr[0];
+
+				var macroMatch = macros[word];
+				if (macroMatch) {
+					// it's a macro; prepend it to the string we're working on
+					var outStr = macroMatch.outStr;
+
+					// then do macro-arg replacement (if any) on coming words
+					argsToDo = macroMatch.args;
+					argCount = 1;
+					while (argsToDo > 0) {
+						if (arr = (/([a-zA-Z0-9_]+)/).exec(remainingInput)) {
+							// leftContext is discarded here as garbage
+							remainingInput = RegExp.rightContext;
+							word = arr[0];
+
+							// make sure we're not inserting recursive junk
+							if (word.indexOf("%") == -1) {
+								// then substitute e.g. %1 for the new word
+								while ((index = outStr.indexOf("%" + argCount)) != -1) {
+									outStr = outStr.substring(0, index) + word +
+										outStr.substring(index + 2);
+								}
+							}
+						}
+						argCount ++;
+						argsToDo --;
+					}
+					// allow recursion: prepend 'input' rather than append 'done'
+					remainingInput = outStr + remainingInput;
+
+					expansions ++;
+					if (expansions > 20) {
+						printUnscreened("Too many macro expansions: aborting!", "client usererror");
+						return null;
+					}
+				} else {
+					// not a macro; accept the original word verbatim
+					done += word;
+				}
+			}
+			return done + remainingInput;
+		}
 		function initPrefs() {
 			prefs = {};
+			macros = {};
 			for (var p in pref_options) {
 				prefs[p] = pref_options[p].def;
 			}
@@ -804,6 +877,43 @@ var c = {};
 			p = JSON.parse(p);
 			for (var pref in p) {
 				setPref(pref, p[pref], true);
+			}
+		}
+		function loadMacroString(m) {
+			m = JSON.parse(m);
+			macros = {};
+			for (var macro in m) {
+				macros[macro] = m[macro];
+			}
+		}
+		// Based on http://code.is-here.com/zealotry/trunk/content/macro.js
+		function addMacro(inStr, outStr) {
+			console.log("Setting macro " + inStr + " to " + outStr);
+
+			var newMacro = new Object();
+			newMacro = new Object();
+			newMacro.inStr = inStr;
+			newMacro.outStr = outStr;
+			newMacro.args = 0;
+
+			var index;
+
+			while ((index = outStr.indexOf("%", index)) != -1) {
+				index++;
+				if (outStr[index] >= '1' && outStr[index] <= '9') {
+					var argIndex = outStr[index] - '0';
+					if (argIndex > newMacro.args) {
+						newMacro.args = argIndex;
+					}
+				}
+			}
+			macros[inStr] = newMacro;
+		}
+		function setCurrentCharacter(c) {
+			currentCharacter = c;
+			console.log("Current character:", currentCharacter);
+			if (localStorage && localStorage.getItem) {
+				loadMacroString(localStorage.getItem("macros-" + currentCharacter));
 			}
 		}
 
@@ -1010,8 +1120,29 @@ var c = {};
 				} else {
 					setPref(components[1], components.slice(2, 100).join(" "));
 				}
+			} else if (lc==="macro" || lc === "@macro" || lc==="macros" || lc==="@macros") {
+				printUnscreened("Your macros:", "client");
+				for (var m in macros) {
+					printUnscreened("  " + m + ": " + macros[m].outStr, "client");
+				}
+				printUnscreened("============", "client");
+				printUnscreened("To add a macro type: macro add <macroname> <macro text>..., e.g. macro add key1 my belt's pouch's keyring's key", "client");
+				printUnscreened("To delete a macro type: macro clear <macroname>", "client");
+			} else if (lc.substring(0,6) === 'macro ' || lc.substring(0,7) === "@macro "
+				|| lc.substring(0,7) === 'macros ' || lc.substring(0,8) === "@macros ") {
+				var components = command.split(" ");
+				if(components[1] === "add" && components.length >= 4) {
+					addMacro(components[2], components.slice(3).join(" "));
+					saveMacros();
+				} else if (components[1] === "clear" && components.length == 3) {
+					console.log("Deleting macro " + components[2]);
+					delete macros[components[2]];
+					saveMacros();
+				} else {
+					printUnscreened("Usage: macro add <macroname> macro_values... or macro clear <macroname>", "client usererror");
+				}
 			} else {
-				doSend(command);
+				doSend(macroSubstitute(command));
 			}
 			saveHistory(command);
 			if (prefs.keep_last_command !== "on") {
@@ -1405,7 +1536,13 @@ var c = {};
 				if (sppos == -1) {
 						badSkoot('?', str);/* malformed SKOOT */
 				} else {
-					doSkoot(str.substring(6, sppos), str.substring(sppos + 1));
+					var seq = str.substring(6, sppos);
+					var rest = str.substring(sppos + 1);
+					if (Number(seq) == 21) {
+						var charPos = rest.indexOf(" ");
+						setCurrentCharacter(rest.substring(charPos));
+					}
+					doSkoot(seq, rest);
 				}
 			} else if (str.substring(0,7)==='MAPURL ') {
 				var url = str.substring(7);
