@@ -1,5 +1,5 @@
 "use strict";
-var conn, output, input, debugtrack, gameCharacter, generic, hasChars, http_port;
+var conn, output, input, debugtrack, gameCharacter, generic, hasChars, http_port, skotosAttributes;
 var c = {};
 //-----Protocol Code
 	function initAJAX(profile) {
@@ -384,7 +384,7 @@ var c = {};
 			background_color: {
 				cat: "styling",
 				type: ["color", "noquotes"],
-				desc: "A custom background color.  Color names or hex codes may be used.",
+				desc: "A custom background color.  Color names or hex codes may be used. Set 'none' to clear.",
 				def: "",
 				onChange: function(old) {
 					var x = prefs.background_color.replace(/['"]+/g, '');
@@ -404,6 +404,7 @@ var c = {};
 					dark: "A dark background with light text.  Considered by many to be easier on the eyes.",
 					dark_hc: "A high-contrast variant of the dark theme.",
 					terminal: "Old style - everything in small, monospace fonts with a dark background.  Doesn't work well with most font_face settings.",
+					skotos: "Assume the server will set the theme"
 				},
 				onChange: function(old) { setActiveStyleSheet(prefs.theme); }
 			},
@@ -1574,8 +1575,9 @@ var c = {};
 	function openElement(tag, attributes) {
 		var ele;
 		if (tag==="body") {
-			return attributes;
-			//return applySkotosTheme(attributes);
+			// Body tag can have attributes including bgcolor, text, link, plink, vlink, topmargin, leftmargin, marginwidth, marginheight
+			// Example: Received body tag bgcolor='#000000' text='#FF6103' link='#cd0000' plink='#cd0000'
+			return applySkotosTheme(attributes);
 		}
 		if (tag==="xch_page") {
 			return applyXchPage(attributes);
@@ -1622,6 +1624,38 @@ var c = {};
 			closeElement("hr");  //<hr> doesn't get inner content.
 		}
 		keepScrollPos();
+	}
+	function applySkotosTheme(attributes) {
+		var styleAttributes = "";
+
+		console.log("applySkotosTheme", attributes);
+		console.log("Existing theme choice:", prefs.theme);
+
+		// Save these in case we enable the SkotOS theme later
+		skotosAttributes = attributes;
+
+		// Only apply a SkotOS theme if that's what the user wants.
+		// Don't fight with other enabled CSS.
+		if (prefs.theme !== "skotos") {
+			console.log("Clear SkotOS styling...");
+			cssMods.skotosAttributes = setStyle("", cssMods.skotosAttributes);
+			return;
+		}
+
+		let attrs = attributes.split(" ");
+		for(var i = 0; i < attrs.length; i++) {
+			if(attrs[i].substring(0, 8) == "bgcolor=") {
+				let bgColor = stripQuotes(attrs[i].substring(8));
+				styleAttributes += "background-color:" + bgColor + ";";
+			} else if (attrs[i].substring(0,5) == "text=") {
+				let textColor = stripQuotes(attrs[i].substring(5));
+				styleAttributes += "color:" + textColor + ";";
+			}
+			// Various unhandled attributes exist and we're ignoring them.
+		}
+
+		// Set the SkotOS-theme CSS
+		cssMods.skotosAttributes = setStyle("#output {" + styleAttributes + "}", cssMods.skotosAttributes);
 	}
 	function applyXchPage(attributes) {
 		if (attributes==="clear=\"text\"" || attributes==="clear=\"text\" /") {
@@ -1684,7 +1718,6 @@ var c = {};
 
 			attr = stripQuotes(attr.substring(6));
 			if (gencolors[attr]) {
-                            console.log("gen" + gencolors[attr]);
 				return {"class":"gen"+gencolors[attr]};
 			}
 			return {"style":"color:"+attr};
@@ -1846,6 +1879,9 @@ var c = {};
 				a.disabled = true;
 				if(a.getAttribute("title") == title) a.disabled = false;
 			}
+		}
+		if (skotosAttributes) {
+			applySkotosTheme(skotosAttributes);
 		}
 	}
 	function changecss(cls, key, value) {
