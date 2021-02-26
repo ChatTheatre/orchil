@@ -398,7 +398,7 @@ var c = {};
 				cat: "styling",
 				type: ["options"],
 				desc: "The colors and styles used for text.",
-				def: "light",
+				def: "dark",
 				opt: {
 					light: "A light background wtih dark text.  The standard Skotos appearance.",
 					dark: "A dark background with light text.  Considered by many to be easier on the eyes.",
