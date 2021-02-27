@@ -398,7 +398,7 @@ var c = {};
 				cat: "styling",
 				type: ["options"],
 				desc: "The colors and styles used for text.",
-				def: "light",
+				def: "skotos",
 				opt: {
 					light: "A light background wtih dark text.  The standard Skotos appearance.",
 					dark: "A dark background with light text.  Considered by many to be easier on the eyes.",
@@ -1626,7 +1626,8 @@ var c = {};
 		keepScrollPos();
 	}
 	function applySkotosTheme(attributes) {
-		var styleAttributes = "";
+		var outputAttributes = "";
+		var extraEntries = "";
 
 		console.log("applySkotosTheme", attributes);
 		console.log("Existing theme choice:", prefs.theme);
@@ -1646,16 +1647,27 @@ var c = {};
 		for(var i = 0; i < attrs.length; i++) {
 			if(attrs[i].substring(0, 8) == "bgcolor=") {
 				let bgColor = stripQuotes(attrs[i].substring(8));
-				styleAttributes += "background-color:" + bgColor + ";";
+				outputAttributes += "background-color:" + bgColor + ";";
 			} else if (attrs[i].substring(0,5) == "text=") {
 				let textColor = stripQuotes(attrs[i].substring(5));
-				styleAttributes += "color:" + textColor + ";";
+				outputAttributes += "color:" + textColor + ";";
+			} else if (attrs[i].substring(0,5) == "link=") {
+				let linkColor = stripQuotes(attrs[i].substring(5));
+				extraEntries += "\n#output a {color:" + linkColor + " !important}"
+			} else if (attrs[i].substring(0,6) == "vlink=") {
+				let linkColor = stripQuotes(attrs[i].substring(6));
+				extraEntries += "\n#output a:visited {color:" + linkColor + " !important} "
+			} else if (attrs[i].substring(0,6) == "alink=") {
+				let linkColor = stripQuotes(attrs[i].substring(6));
+				extraEntries += "\n#output a:active {color:" + linkColor + " !important}"
 			}
 			// Various unhandled attributes exist and we're ignoring them.
 		}
 
+		let cssText = "#output {" + outputAttributes + "}" + extraEntries;
+		console.log("Skotos styling:", cssText);
 		// Set the SkotOS-theme CSS
-		cssMods.skotosAttributes = setStyle("#output {" + styleAttributes + "}", cssMods.skotosAttributes);
+		cssMods.skotosAttributes = setStyle(cssText, cssMods.skotosAttributes);
 	}
 	function applyXchPage(attributes) {
 		if (attributes==="clear=\"text\"" || attributes==="clear=\"text\" /") {
