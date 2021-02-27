@@ -1,6 +1,6 @@
 "use strict";
 var conn, output, input, debugtrack, gameCharacter, generic, hasChars, http_port;
-var currentCharacter, macros;
+var macros;
 var c = {};
 //-----Protocol Code
 	function initAJAX(profile) {
@@ -793,9 +793,9 @@ var c = {};
 		function saveMacros() {
 			var toSave = JSON.stringify(macros);
 			if(localStorage && localStorage.setItem) {
-				printUnscreened("Attempting to save macros for character " + currentCharacter + " in local storage...", "client");
-				localStorage.setItem("macros-" + currentCharacter, toSave);
-				if (localStorage.getItem("macros-" + currentCharacter) != toSave) {
+				printUnscreened("Attempting to save macros in local storage...", "client");
+				localStorage.setItem("macros", toSave);
+				if (localStorage.getItem("macros") != toSave) {
 					printScreened("Saving macros to local storage failed.", "client error");
 				} else {
 					printScreened("Macros appear to have been successfully saved.", "client");
@@ -869,6 +869,7 @@ var c = {};
 			}
 			if (localStorage && localStorage.getItem) {
 				loadPrefString(localStorage.getItem("prefs"));
+				loadMacroString(localStorage.getItem("macros"));
 			}
 
 			setActiveStyleSheet(prefs.theme);
@@ -908,13 +909,6 @@ var c = {};
 				}
 			}
 			macros[inStr] = newMacro;
-		}
-		function setCurrentCharacter(c) {
-			currentCharacter = c;
-			console.log("Current character:", currentCharacter);
-			if (localStorage && localStorage.getItem) {
-				loadMacroString(localStorage.getItem("macros-" + currentCharacter));
-			}
 		}
 
 		function init() {
@@ -1537,12 +1531,7 @@ var c = {};
 						badSkoot('?', str);/* malformed SKOOT */
 				} else {
 					var seq = str.substring(6, sppos);
-					var rest = str.substring(sppos + 1);
-					if (Number(seq) == 21) {
-						var charPos = rest.indexOf(" ");
-						setCurrentCharacter(rest.substring(charPos));
-					}
-					doSkoot(seq, rest);
+					doSkoot(seq, str.substring(sppos + 1));
 				}
 			} else if (str.substring(0,7)==='MAPURL ') {
 				var url = str.substring(7);
