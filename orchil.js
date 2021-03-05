@@ -1664,7 +1664,7 @@ var c = {};
 			// Various unhandled attributes exist and we're ignoring them.
 		}
 
-		let cssText = "#output {" + outputAttributes + "}" + extraEntries;
+		let cssText = "#output {" + outputAttributes + "} #commandinput {" + outputAttributes + "}" + extraEntries;
 		console.log("Skotos styling:", cssText);
 		// Set the SkotOS-theme CSS
 		cssMods.skotosAttributes = setStyle(cssText, cssMods.skotosAttributes);
