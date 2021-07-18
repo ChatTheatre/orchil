@@ -1482,6 +1482,8 @@ var c = {};
 		//writeToConsole("ARG");
 
 		if (c.raw) writeToConsole("R:"+msg);
+        
+        msg = msg.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
 		//debugMsg("Receive: " + msg);
 		noteScrollPos();
