@@ -10,8 +10,8 @@
 		addComponent('clientui'       , 'right');
 			addComponent('save_button', 'clientui', false, 'saveCurrentWindow', [], '<img alt="Save Log" title="Save Log" src="log.png">');
 			addComponent('settings_button', 'clientui', false, 'openSettings', [], '<img alt="Settings" title="Settings" src="settings.png">');
-		addComponent('newplayers'     , 'right'   , false, 'openerWin', ['http://www.eternalcitygame.com/overview.shtml'], '<img alt="Getting Started" src="http://images.eternalcitygame.com/started.gif">');
-		addComponent('vote_tec'       , 'right'   , false, 'openerWin', ['http://www.topmudsites.com/cgi-bin/topmuds/rankem.cgi?id=scarlatc'], '<img alt="Vote for the Eternal City" title="Vote for the Eternal City on TopMudSites" src="http://www.eternalcitygame.com/artwork/votenow_btn.gif">');
+		addComponent('newplayers'     , 'right'   , false, 'openerWin', ['http://eternal-city.wikidot.com/'], '<img alt="Getting Started" src="http://images.eternalcitygame.com/started.gif">');
+		addComponent('vote_tec'       , 'right'   , false, 'openerWin', ['http://www.topmudsites.com/cgi-bin/topmuds/rankem.cgi?id=scarlatc'], '<img alt="Vote for the Eternal City" title="Vote for the Eternal City on TopMudSites" src="votenow_btn.gif">');
 		addComponent('right_fill'     , 'right'   , 'fill');
 		addComponent('macro_area'     , 'right');
 		for (var i=1;i<=15;i++) {
