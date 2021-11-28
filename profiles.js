@@ -46,7 +46,7 @@ var profiles = {
 	"portal_tec":{
 		"method":   "websocket",
 		"protocol": "ws",
-		"server":   "skotos.net",
+		"server":   "game.eternalcitygame.com",
 		"port":      8080,
 		"path":     "/tec",
 		"extra":    "tec",
